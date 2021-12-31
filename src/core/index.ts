@@ -7,7 +7,7 @@
  */
 
 
- interface ThisInInterFor extends ArrayConstructor{
+ interface ThisInInterFor extends Array<any>{
 
 
     addValues(arr:Array<any>, index?:number):void;
@@ -29,13 +29,13 @@
  declare var simulate:{
 
     typing:(obj:{
-        // The target's id value.
+        
         in:string,
         setting:[{
             text:string | number,
             speed:number
         }]
-        // This function will be executed as soon as the sumalation ends.
+        
         done?():any,
 
     })=>void,
@@ -140,7 +140,7 @@
      translate?:string;
      role;
      required;
-     contenteditable:true | false
+     contenteditable:boolean
 
 
 
