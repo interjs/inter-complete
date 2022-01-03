@@ -244,11 +244,8 @@ String.prototype.removeSpaces=function(){
             if(sett.comment){
           content=content.addToStart(`/**
  * 
- * 
  * The original file is in:${fileDir.removeSpaces().trim().length==0 ?  __dirname : fileDir }/${file}
  *   
- * 
- *
  */
 
           
