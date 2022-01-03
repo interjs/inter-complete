@@ -1,0 +1,17 @@
+{
+
+"name":"autocomplete",
+"description":"Inter and Interfy auto complete",
+ "author":"Denis Power",
+  "version":"1.0.0",
+  "license":"MIT",
+   "repository":"github:interjs/autocomplete"
+  "devDependencies":{
+  "node":">=14",
+  "inter":">=1.2" 
+  "interfy":">=2.1"
+  
+  }
+
+
+}
