@@ -4,9 +4,10 @@
  * Created by Denis Power.
  * 
  * Mit lincensed by Interjs org.
+ * https://github.com/interjs
  * 
  * v1.0.0
- * 
+ * 2022
  * Support for Inter v1.2+ and Interfy v2+.
  * 
  */
@@ -89,7 +90,7 @@
             speed:number
         }]
         /**
-         * The code enside this function will run as soon as the type writter simulation ends.
+         * The code inside this function will run as soon as the type writter simulation ends.
          * 
          */
         done?():any,
@@ -115,7 +116,7 @@
          */
         speed:number,
         /**
-         * The code enside this function will run as soon as the type writter simulation ends.
+         * The code inside this function will run as soon as the type writter simulation ends.
          * 
          */
         done?():any
@@ -127,19 +128,19 @@
  export declare var data:{
 
     /**
-     *  Used to do fussy search.
+     * Fussy search.
      * 
      */
 
     query:(obj:{
         /**
-         * This property indicates an array where the search will be based on.
+         * An array where the search will be based on.
          * 
          */
-        in:Array<any>
+        in:Array<unknown>
         setting:{
            /**
-         * This property indicates an empty array that will be filled by the result of
+         * An empty array that will be filled by the result of
          * the fussy search.
          * 
          */ 
@@ -186,7 +187,9 @@
          */
         data:Array<any>,
         /**
-         * The reactor of the list.
+         * The global reactor of the list.
+         * 
+         * @deprecated
          * 
          */
         react?:string,
@@ -432,23 +435,23 @@ type AR_props={
      */
     private?:boolean
 
-});
+}): void | Object;
 
 /**
  * Attribute manager.
  * 
  */
 
-export declare function toATTR(obj:AR_props);
+export declare function toATTR(obj:AR_props): void | Object;
 
 
 /**
  * 
- * Container rendering
+ * Container rendering.
  * 
  */
 
-export declare function renderContainer(obj:AR_props);
+export declare function renderContainer(obj:AR_props): void | Object;
 
 /**
  * 
@@ -492,10 +495,11 @@ export declare var app:{
 
     /**
      * Used to set the status of your app, is it in production or under development?
+     * By default the value of this property is development.
      * 
      */
 
-    status: "production";
+    status: "production" | "development";
     
 
 }
@@ -520,6 +524,8 @@ export declare var url:{
 };
 
 
+type AjaxResult=string | Object | Blob;
+
 /**
  * Used for ajax request.
  * 
@@ -541,7 +547,7 @@ export declare var backend:{
          * The request body.
          * 
          */
-        body?:unknown;
+        body?:JSON | string | Blob;
         withCridentials?:boolean;
         events?:{
 
@@ -550,19 +556,19 @@ export declare var backend:{
              * Fired while the request is being made.
              * 
              */
-            onprogress(this:void, percentage:number):unknown,
+            onprogress(this:void, percentage:number):void,
             /**
              * 
              * Fired when the request timeout
              * 
              */
-            ontimeout(this:void):unknown;
+            ontimeout(this:void):void;
             /**
              * 
              * Fired when the request is aborted.
              * 
              */
-            onabort(this:void):unknown;
+            onabort(this:void):void;
 
         },
 
@@ -579,21 +585,21 @@ export declare var backend:{
          * The argument of this function will be fired if the connection succeeds.
          * 
          */
-        okay(okayHandler:(this:thisInAjaxRequestHandler, result)=>unknown):void;
+        okay(okayHandler:(this:thisInAjaxRequestHandler, result:AjaxResult)=>unknown):void;
         /**
          * 
          * The argument of this function will be fired if the connection fails.
          * 
          */
-        error(errorHandler:(this:thisInAjaxRequestHandler, result)=>unknown):void;
+        error(errorHandler:(this:thisInAjaxRequestHandler, result: AjaxResult)=>unknown):void;
         /**
          * 
          * The first argument of this function is the okay handler and the second is the error handler.
          * 
          */
         response(
-            okayHandler:(this:thisInAjaxRequestHandler, result)=>unknown,
-            errorHandler:(this:thisInAjaxRequestHandler, result)=>unknown,
+            okayHandler:(this:thisInAjaxRequestHandler, result:AjaxResult)=>unknown,
+            errorHandler:(this:thisInAjaxRequestHandler, result:AjaxResult)=>unknown,
         ):void;
 
 
@@ -614,14 +620,14 @@ interface Event{
      * Used to listen to a costum event.
      * 
      */
-    listen(eventName:unknown, eventHandler:(eventInfo?:unknown)=>unknown):boolean;
+    listen(eventName:string, eventHandler:(eventInfo?:unknown)=>unknown):boolean;
 
     /**
      * 
      * Used to fire a costum event.
      * 
      */
-    fire(eventName:unknown, eventInfo?:unknown):boolean;
+    fire(eventName:string, eventInfo?:unknown):boolean;
     /**
      * 
      * Used to protect a costum event.
@@ -662,11 +668,11 @@ export declare var form:{
 
 export declare  var storage:{
 
-    set(infoName:unknown, info:unknown):void;
-    get(infoName:unknown, handler:(info?)=>unknown):void;
-    has(infoName:unknown):boolean
-    delete(infoName:unknown):void;
-    protect(infoName:unknown):void;
+    set(infoName:string, info:unknown):void;
+    get(infoName:string, handler:(info?)=>unknown):void;
+    has(infoName:string):boolean
+    delete(infoName:string):void;
+    protect(infoName:string):void;
 
 }
 
@@ -691,6 +697,25 @@ export declare var interface:{
 
 }
 
+export declare var validate:{
+
+    /**
+     * Used to check if @arg 
+     * is an email, if it's true is returned otherwise
+     * false is returned.
+     * 
+     */
+    email(arg:string):boolean,
+
+   /**
+    * USed to check if @arg
+    * is an url, if it's true is returned otherwise
+    * false is returned.
+    */
+    url(arg:string):boolean
+
+}
+
 
 // Interfy Api.
 
@@ -706,12 +731,12 @@ interface instanceMethods{
          * An object whose the properties are the names of the query string parameters.
          * 
          */
-        param:Object;
+      readonly param:Object;
         /**
          * An object whose the properties are the names of the variables.
          * 
          */
-        var:Object
+        readonly var:Object
 
     })=>unknown):void;
     /**
@@ -734,6 +759,23 @@ interface instanceMethods{
      * Read only property, return the Interfy's version installed.
      * 
      */
+
+ /**
+   * Used to create the router.
+   * 
+   * This autocomplete only supports Interfy v2.1+ and
+   * the createRouter() instance method was removed in v2.0.0
+   * 
+   * @deprecated
+   * 
+   */
+  createRouter(call:(req:{
+    readonly url:string,
+    is(path:string):boolean,
+    getVar(path:string):Object,
+})=>void):void;
+
+
     readonly version:string;
 
 
@@ -753,7 +795,13 @@ interface INTERFY extends Function{
   * 
   */
  readonly prototype:instanceMethods;
+ /**
+  * 
+  * 
+  * 
+  */
 
+ 
 
 }
 
