@@ -10,8 +10,11 @@
  */
 
 
- const fs=require("fs");
+
+const fs=require("fs");
  const path=require("path");
+
+ 
 
  let config;
  let dir;
@@ -46,14 +49,18 @@ String.prototype.addToStart=function(content){
 
 }
 
-String.prototype.removeSpaces=function(){
+function getFileName(file){
 
-
-    return this.replace(/\s/g,"") ;
+    return path.basename(file);
 
 
 }
 
+function getExt(file){
+
+    return path.extname(file);
+
+}
 
  function hasConfig(){
 
@@ -69,7 +76,7 @@ String.prototype.removeSpaces=function(){
 
     const pattern=/\.js/;
 
-    return pattern.test(path.extname(file));
+    return pattern.test(getExt(file));
 
  }
 
@@ -87,7 +94,7 @@ String.prototype.removeSpaces=function(){
 
             
 
-            throw new Error(`"${configContent}" is not a json format.
+            throw new Error(`"${configContent}" is not a valid json format.
             The content of config.json must be something like:
 
             {
@@ -124,14 +131,14 @@ String.prototype.removeSpaces=function(){
         target,
         outPutDir,
         comment,
-        ext,
+        subExt,
 
 
     }=config;
 
     const setting={
         comment:(comment!=void 0 && !comment) ? false : true,
-        ext:(typeof ext=="string") ? ext : null,
+        ext:(typeof subExt=="string" && subExt.trim().length>0) ? ext : null,
         outPutDir:(typeof outPutDir=="string") ? outPutDir :"./",
     }
 
@@ -187,6 +194,20 @@ String.prototype.removeSpaces=function(){
     files();
 
 
+    }else{
+
+        throw new Error(`
+        
+        "target" must be an array like:
+
+        {
+
+            "target":["file1.js", "file2.js",...]
+
+        }
+        
+        `)
+
     }
 
 
@@ -194,7 +215,8 @@ String.prototype.removeSpaces=function(){
 
  function compile(file,sett){
 
-      const fileDir=path.dirname(file)
+      const fileDir=path.dirname(file).replace(/\./,"")
+
       
 
         const exist=fs.existsSync(file);
@@ -239,13 +261,20 @@ String.prototype.removeSpaces=function(){
             content=content.replace(importStatement,"");
    
             
-            console.log(content);
+            
 
             if(sett.comment){
+                
+            
+                const loc=(`${fileDir.trim().length>0 ?  fileDir : __dirname }/${getFileName(file)}`)
           content=content.addToStart(`/**
  * 
- * The original file is in:${fileDir.removeSpaces().trim().length==0 ?  __dirname : fileDir }/${file}
+ * You must use this code in the browser.
+ * 
+ * The original code is in : ${loc}
  *   
+ * To remove this, set comment to false in config.json.
+ *
  */
 
           
@@ -253,8 +282,9 @@ String.prototype.removeSpaces=function(){
 
             }
 
-            file=file.replace(".js","");
-            file=path.basename(file);
+            file=getFileName(file);
+            file=file.replace(/.js/,"");
+            
             fs.writeFileSync(`${sett.outPutDir ? dir : "."}/${file}.${sett.ext ? sett.ext : "browser"}.js`, content);
             
             
