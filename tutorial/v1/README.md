@@ -22,7 +22,7 @@ import { toHTML, Inter, template }  from "./inter-complete/index";
 
 ```
 
-E quando você usar uma das seguintes sintaxes importadas, o VSCODE vai auto completar a sua sintaxe. Por exemplo, no `toHTML`, quando você passar o objeto como o seu argumento, o VSCODE vai auto completar/sugerir quando você digitar o nome de uma propriedade válida no objeto que é passado como o argumento da função toHTML, e as sugestões estarão documentadas, ou seja, o Inter complete vai dizer para que serve aquilo.
+E quando você usar uma das seguintes `funções` importadas, o VSCODE vai auto completar a sua sintaxe. Por exemplo, no `toHTML`, quando você passar o objeto como o seu argumento, o VSCODE vai auto completar/sugerir quando você digitar o nome de uma propriedade válida no objeto que é passado como o argumento da função toHTML, e as sugestões estarão documentadas, ou seja, o Inter complete vai dizer para que serve aquilo.
 
 #### parser.js
 
