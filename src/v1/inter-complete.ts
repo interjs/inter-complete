@@ -244,7 +244,7 @@
              * 
              */
                 replace:boolean
-            }), 
+            }):void, 
         }>
 
     }):void
@@ -335,20 +335,29 @@
      * The tag's text, if it has children the text will be ignored.
      * 
      */
-    text?:string | number
-    
+    text?:string | number,
     events?:E,
     /**
      * The attributes for the element.
      * 
      */
     attrs?:commonHTMLAttrs,
+    /**
+     * The styles that will applied to the element.
+     */
     styles?:S,
     /**
      * The element's children.
      * 
      */
     children?:Array<els<T,E,S>>
+    /**
+     * 
+     * The methods of this object will be invoked
+     * as soon as the element is created.
+     * 
+     */
+    handlers?:Object
 
 }
 
@@ -382,7 +391,7 @@ type AR_props={
          */
     in:string,
     /**
-     * The properties names of this object will be the names of the references.
+     * The properties' names of this object will be the names of the references.
      * 
      */
     data:Object,
