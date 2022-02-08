@@ -18,7 +18,7 @@ Tens os requisitos necessário? Então a última coisa que falta é baixares o I
 Cria um arquivo com a extensão `js`, e importa a declaração da sintaxe do Inter da seguinte forma:
 
 ```js
-Import { toHTML, Inter, template }  from "./inter-complete/index";
+import { toHTML, Inter, template }  from "./inter-complete/index";
 
 ```
 
@@ -26,7 +26,7 @@ E quando você usar uma das seguintes sintaxes importadas, o VSCODE vai auto com
 
 #### parser.js
 
-Você nunca vai usar (no navegador) os arquivos que importam as declarações da sintaxe do Inter, esses arquivos serão apenas um `development-only`(arquivos apenas para desenvolvimento), então quais são os arquivos que serão usados no navegador? O parser vai gerar esses arquivos. Quando você quiser gerar os arquivos que serão usados no navegador, você deve criar um arquivo JSON chamado `config.json`, o config aceita as seguintes opções:
+Você nunca vai usar (no navegador) os arquivos que importam as declarações da sintaxe do Inter, esses arquivos serão apenas um `development-only`(arquivos apenas para desenvolvimento), então quais são os arquivos que serão usados no navegador? O parser vai gerar esses arquivos sem os `imports`. Quando você quiser gerar os arquivos que serão usados no navegador, você deve criar um arquivo JSON chamado `config.json`, o config aceita as seguintes opções:
 
 * inputDir => Indica o caminho para diretório onde os arquivos  que importam as declarações de sintaxe do Inter estão localizados, é recomendado que uses sempre caminhos absolutos.
 * outPutDir => Indica o caminho para o diretório onde os arquivos que vais usar no navegador estarão localizados, é recomendado que uses sempre caminhos absolutos.
