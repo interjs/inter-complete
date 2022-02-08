@@ -9,7 +9,7 @@ Instalar o Inter complete é tão simples como instalar o Inter, você precisa t
 *	Ter o Nodejs instalado e saber rodar um programa em Node.
 *	Ter o Winrar instalado e saber trabalhar com ele.
 
-Tens os requisitos necessários? Então a última coisa que falta é baixares o Inter complete! Para baixar o Inter complete clica em [baixar](https://github.com/interjs/inter-complete/releases/download/v1.0.0/inter-complete.zip), vai baixar um arquivo zip, e você usará o Winrar para extrair a pasta inter-complete, na referida pasta terá dois arquivos, eles são:
+Tens os requisitos necessário? Então a última coisa que falta é baixares o Inter complete! Para baixar o Inter complete clica em [baixar](https://github.com/interjs/inter-complete/releases/download/v1.0.0/inter-complete.zip), vai baixar um arquivo zip, e você usará o Winrar para extrair a pasta inter-complete, na referida pasta terá dois arquivos, eles são:
 
 #### index.ts
  Nesse arquivo tem as declarações da sintaxe do Inter.
