@@ -1,9 +1,10 @@
 ## INTRODUÇÃO
 
-Programar sem o auto complete pode ser uma tarefa tediosa e improdutiva, por isso que o Inter Complete foi criado. O Inter complete dá ao VSCODE a capacidade de auto completar a sintaxe do Inter e da Interfy. 
+Programar sem o auto complete pode ser uma tarefa tediosa e improdutiva, por isso que o Inter complete foi criado. O Inter complete dá ao VSCODE a capacidade de auto completar a sintaxe do Inter e da Interfy. 
 
 ## INSTALAÇÃO
-Instalar o Inter complete é tão simples como instalar o Inter, você precisa ter os seguintes requisitos:
+
+Paara instalar o Inter complete você precisa ter os seguintes requisitos:
 
 *	Ter o VSCODE instalado e saber trabalhar com ele.
 *	Ter o Nodejs instalado e saber rodar um programa em Node.
