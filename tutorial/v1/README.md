@@ -4,7 +4,7 @@ Programar sem o auto complete pode ser uma tarefa tediosa e improdutiva, por iss
 
 ## INSTALAÇÃO
 
-Paara instalar o Inter complete você precisa ter os seguintes requisitos:
+Para instalar o Inter complete você precisa ter os seguintes requisitos:
 
 *	Ter o VSCODE instalado e saber trabalhar com ele.
 *	Ter o Nodejs instalado e saber rodar um programa em Node.
@@ -32,7 +32,7 @@ Você nunca vai usar (no navegador) os arquivos que importam as declarações da
 * outPutDir => Indica o caminho para o diretório onde os arquivos que vais usar no navegador estarão localizados, é recomendado que uses sempre caminhos absolutos.
 * target => Deve ser uma array de string, e cada string deve indicar o nome do arquivo Javascript que importa a declaração da sintaxe do Inter e que pretendes que seja compilado para que possa ser importado numa tag script. Normalmente esses arquivos serão produzidos com a sub extensão browser, por exemplo: inter.browser.js
 * subExt => Como o nome o descreve, essa opção diz para o parser que nós queremos que o nosso arquivo tenha uma sub extensão customizada, ao invés o browser, será o que você definir com essa opção.
-* comment => Os arquivos produzidos terão comentário bem no topo do código, esse comentário será útil, porque diz qual é o caminho do arquivo original(que tem as declarações de sintaxe), para remover o comentário basta definir essa opção para false.
+* comment => Os arquivos produzidos terão comentário bem no topo do código, esse comentário será útil, porque diz qual é o caminho do arquivo original(que tem a importação das declarações de sintaxe), para remover o comentário basta definir essa opção para false.
 
 Para gerar os arquivos que serão usados no navegador, configura o Parser com o config.json e rode o arquivo parser.js com o node, o arquivo config.json e o parser.js devem estar no mesmo diretório.
 Agora estás prontos para usar o Inter complete! Qualquer dúvida abra uma issue descrevendo a tua dúvida.
