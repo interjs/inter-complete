@@ -12,7 +12,7 @@
 
 
 const fs=require("fs");
- const path=require("path");
+const path=require("path");
 
  
 
@@ -132,14 +132,38 @@ function getExt(file){
         outPutDir,
         comment,
         subExt,
+        inputDir
 
 
     }=config;
+	
+	if((outPutDir==void 0 || typeof outPutDir!=="string") || (inputDir==void 0 || typeof inputDir!=="string" )){
+		
+		
+		throw new SyntaxError(`
+		
+		outPutDir and inputDir must not be undefined and must be of type string.
+		
+		`)
+		
+    }
+    
+    if(!(path.isAbsolute(outPutDir) && path.isAbsolute(inputDir))){
+
+        throw new Error(`
+        
+        The path of outPutDir and inputDir must be only absolute.
+
+        
+        `)
+
+    }
 
     const setting={
         comment:(comment!=void 0 && !comment) ? false : true,
-        ext:(typeof subExt=="string" && subExt.trim().length>0) ? ext : null,
-        outPutDir:(typeof outPutDir=="string") ? outPutDir :"./",
+        subExt:(typeof subExt=="string" && subExt.trim().length>0) ? subExt : null,
+        outPutDir:inputDir,
+        inputDir:inputDir,
     }
 
 
@@ -215,6 +239,8 @@ function getExt(file){
 
  function compile(file,sett){
 
+
+      file=`${sett.inputDir}${sett.inputDir.endsWith("/") ? "" : "/"}${file}`;
       const fileDir=path.dirname(file).replace(/\./,"")
 
       
@@ -285,7 +311,7 @@ function getExt(file){
             file=getFileName(file);
             file=file.replace(/.js/,"");
             
-            fs.writeFileSync(`${sett.outPutDir ? dir : "."}/${file}.${sett.ext ? sett.ext : "browser"}.js`, content);
+            fs.writeFileSync(`${sett.outPutDir ? dir : "."}/${file}.${sett.subExt ? sett.subExt : "browser"}.js`, content);
             
             
 
