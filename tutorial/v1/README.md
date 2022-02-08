@@ -9,14 +9,17 @@ Instalar o Inter complete é tão simples como instalar o Inter, você precisa t
 *	Ter o Nodejs instalado e saber rodar um programa em Node.
 *	Ter o Winrar instalado e saber trabalhar com ele.
 
-Tens os requisitos necessários? Então a última coisa que falta é baixares o Inter complete! Para baixar o Inter complete clica em baixar, vai baixar um arquivo zip, e você usará o Winrar para extrair a pasta inter-complete, na referida pasta terá dois arquivos, eles são:
+Tens os requisitos necessários? Então a última coisa que falta é baixares o Inter complete! Para baixar o Inter complete clica em [baixar](https://github.com/interjs/inter-complete/releases/download/v1.0.0/inter-complete.zip), vai baixar um arquivo zip, e você usará o Winrar para extrair a pasta inter-complete, na referida pasta terá dois arquivos, eles são:
 
 #### index.ts
  Nesse arquivo tem as declarações da sintaxe do Inter.
 
 Cria um arquivo com a extensão `js`, e importa a declaração da sintaxe do Inter da seguinte forma:
 
-Import { toHTML, Inter, template }  from “./inter-complete/index”;
+```js
+Import { toHTML, Inter, template }  from "./inter-complete/index";
+
+```
 
 E quando você usar uma das seguintes sintaxes importadas, o VSCODE vai auto completar a sua sintaxe. Por exemplo, no `toHTML`, quando você passar o objeto como o seu argumento, o VSCODE vai auto completar/sugerir quando você digitar o nome de uma propriedade válida no objeto que é passado como o argumento da função toHTML, e as sugestões estarão documentadas, ou seja, o Inter complete vai dizer para que serve aquilo.
 
